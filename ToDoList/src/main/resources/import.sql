@@ -1,1 +1,0 @@
-INSERT INTO Account (id, todo) VALUES ('1', 'Hello');
