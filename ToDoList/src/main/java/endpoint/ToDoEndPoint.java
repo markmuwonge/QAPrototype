@@ -3,8 +3,10 @@ package endpoint;
 
 
 import javax.inject.Inject;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 import service.TodoService;
 
@@ -29,6 +31,14 @@ public class ToDoEndPoint {
 	public String updateToDo(String toDo) {
 		return tdservice.updateToDo(toDo);
 	}
+	
+	@GET
+	@Path("/deleteTD/{id}")
+	public String deleteTodo(@PathParam("id") Integer id) {
+		return tdservice.deleteToDo(id);
+	}
+	
+	
 	
 
 	

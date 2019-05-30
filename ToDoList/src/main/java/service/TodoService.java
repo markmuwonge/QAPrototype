@@ -23,6 +23,9 @@ public class TodoService {
 		return this.tdlrepo.updateToDo(toDo);
 	}
 	
+	public String deleteToDo(int id) {
+		return this.tdlrepo.deleteToDo(id);
+	}
 	
 
 }

@@ -35,6 +35,12 @@ public class ToDoListDB {
 		return "To-do successfully updated";
 	}
 	
+	public String deleteToDo(int id) {
+		manager.remove(manager.find(ToDo.class, id));
+		
+		return "To-do successfully deleted";
+	}
+	
 
 	
 	
