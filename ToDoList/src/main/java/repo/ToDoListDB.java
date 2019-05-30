@@ -29,6 +29,12 @@ public class ToDoListDB {
 		return "To-do added";
 	}
 	
+	public String updateToDo(String toDo) {
+		ToDo aTodo = json.fromJSON(toDo, ToDo.class);
+		manager.merge(aTodo);
+		return "To-do successfully updated";
+	}
+	
 
 	
 	

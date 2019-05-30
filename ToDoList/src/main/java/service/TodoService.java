@@ -18,5 +18,11 @@ public class TodoService {
 	public String createToDo(String toDo) {
 		return this.tdlrepo.createToDo(toDo);
 	}
+	
+	public String updateToDo(String toDo) {
+		return this.tdlrepo.updateToDo(toDo);
+	}
+	
+	
 
 }

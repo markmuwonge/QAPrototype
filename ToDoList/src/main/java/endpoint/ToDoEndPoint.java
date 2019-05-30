@@ -24,6 +24,12 @@ public class ToDoEndPoint {
 		return tdservice.createToDo(toDo);
 	}
 	
+	@POST
+	@Path("/updateTD")
+	public String updateToDo(String toDo) {
+		return tdservice.updateToDo(toDo);
+	}
+	
 
 	
 }
