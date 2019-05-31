@@ -3,8 +3,12 @@ package endpoint;
 
 
 import javax.inject.Inject;
-import javax.websocket.server.PathParam;
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
+import service.TodoService;
 
 
 
@@ -13,13 +17,7 @@ public class ToDoEndPoint {
 	
 	
 	@Inject
-	private service.TodoService tdservice;
-	
-	@GET
-	@Path("/getTD/{id}")
-	public String getToDo(@PathParam("id") Integer id) {
-		return tdservice.getToDo(id);
-	}
+	private TodoService tdservice ;
 	
 	@GET
 	@Path("/getAllTD")
@@ -44,6 +42,9 @@ public class ToDoEndPoint {
 	public String deleteTodo(@PathParam("id") Integer id) {
 		return tdservice.deleteToDo(id);
 	}
+	
+	
+	
 
 	
 }
