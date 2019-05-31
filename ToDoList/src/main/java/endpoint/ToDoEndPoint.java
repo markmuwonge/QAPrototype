@@ -19,6 +19,11 @@ public class ToDoEndPoint {
 	@Inject
 	private TodoService tdservice ;
 	
+	@GET
+	@Path("/getAllTD")
+	public String getAllToDo() {
+		return tdservice.getAllToDo();
+	}
 	
 	@POST
 	@Path("/createTD")

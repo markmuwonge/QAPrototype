@@ -14,6 +14,13 @@ public class TodoService {
 	ToDoListDB tdlrepo;
 	
 	String allToDoObjectsAsJson = "";
+	
+	public String getAllToDo() {
+		this.tdlrepo.getAllTodo().stream()
+			.forEach(x -> allToDoObjectsAsJson += this.json.toJSON(x) + "\n");
+		
+		return allToDoObjectsAsJson.trim();
+	}
 
 	public String createToDo(String toDo) {
 		return this.tdlrepo.createToDo(toDo);

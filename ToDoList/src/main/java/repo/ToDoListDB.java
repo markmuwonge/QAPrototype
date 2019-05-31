@@ -21,7 +21,10 @@ public class ToDoListDB {
 	@Inject
 	private JSONUtil json;
 	
-	
+	public List<ToDo> getAllTodo(){
+		return manager.createQuery("Select a from ToDo a", ToDo.class).getResultList();
+	}
+
 	public String createToDo(String toDo) {
 		ToDo aTodo = json.fromJSON(toDo, ToDo.class);
 		manager.persist(aTodo);
