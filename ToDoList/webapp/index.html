@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+
+<script src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src= "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script>
+//https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
+//above chrome extension required to test function work correctly 
+
+function create(){
+
+var input = document.getElementById("textbox1").value
+var request = new XMLHttpRequest();
+
+if ('withCredentials' in request) {
+request.open('POST', 'http://localhost:8080/ToDoList/rest/todo/createTD', true);
+request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+request.setRequestHeader('Api-Key', 'foobar');
+request.send(JSON.stringify({"todo": input}));
+}
+}
+
+function listAll(){
+    var request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/ToDoList/rest/todo/getAllTD', true);
+    request.onreadystatechange = function() {
+      document.getElementById("page-title").innerHTML = this.responseText;
+    };
+    request.send();
+}
+
+function deleteTd(){
+
+var input = document.getElementById("textbox1").value
+var request = new XMLHttpRequest();
+
+if ('withCredentials' in request) {
+request.open('GET', 'http://localhost:8080/ToDoList/rest/todo/deleteTD/' + input, true);
+request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+request.setRequestHeader('Api-Key', 'foobar');
+request.send();
+}
+
+}
+
+function updateTd(){
+var input = document.getElementById("textbox1").value
+var inputNo = document.getElementById("textbox2").value
+var request = new XMLHttpRequest();
+
+if ('withCredentials' in request) {
+request.open('POST', 'http://localhost:8080/ToDoList/rest/todo/updateTD', true);
+request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+request.setRequestHeader('Api-Key', 'foobar');
+request.send(JSON.stringify({id: inputNo ,todo: input}));
+}
+}
+
+
+</script>
+
+<div style="padding-left:16px">
+</div>
+
+
+<h1 id="page-title"></h1>
+<button id="load-data" onclick="listAll()">Click Here to Load the Data</button>
+<br>
+<br>
+<input type="text" id="textbox1">
+<input type="button" value="click to create" onclick="create()">
+<input type="button" value="click to delete" onclick="deleteTd()">
+<br>
+<br>
+<input type="text" id="textbox2">
+<input type="button" value="click to update" onclick="updateTd()">
+</body>
+
+
+
+</html>
