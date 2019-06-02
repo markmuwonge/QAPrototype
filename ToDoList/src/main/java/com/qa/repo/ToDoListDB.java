@@ -1,4 +1,4 @@
-package repo;
+package com.qa.repo;
 
 import java.util.List;
 

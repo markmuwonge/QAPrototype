@@ -1,4 +1,4 @@
-package repo;
+package com.qa.repo;
 
 import com.google.gson.Gson;
 

@@ -1,6 +1,6 @@
 package com.qa.ToDoList;
 
-import endpoint.ToDoEndPoint;
+import com.qa.endpoint.ToDoEndPoint;
 
 public class App 
 {

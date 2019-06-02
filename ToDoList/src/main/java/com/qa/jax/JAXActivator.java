@@ -1,4 +1,4 @@
-package jax;
+package com.qa.jax;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

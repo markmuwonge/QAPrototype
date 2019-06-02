@@ -1,4 +1,4 @@
-package com.qa.ToDoList;
+package com.qa.ToDoListTest;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

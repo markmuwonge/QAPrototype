@@ -1,9 +1,9 @@
-package service;
+package com.qa.service;
 
 import javax.inject.Inject;
 
-import repo.JSONUtil;
-import repo.ToDoListDB;
+import com.qa.repo.JSONUtil;
+import com.qa.repo.ToDoListDB;
 
 public class TodoService {
 

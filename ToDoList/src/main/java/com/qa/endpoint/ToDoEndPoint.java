@@ -1,4 +1,4 @@
-package endpoint;
+package com.qa.endpoint;
 
 
 
@@ -8,7 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import service.TodoService;
+import com.qa.service.TodoService;
 
 
 
