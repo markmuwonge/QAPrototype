@@ -159,3 +159,34 @@ a:hover{
 .close:focus {
   color: red;
   cursor: pointer;
+}
+
+#tbl {
+	width: 100%;
+	border:1px;
+	table-layout: fixed;
+}
+#tbl td, #tbl th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  width: 100px;
+}
+
+td {
+	 color:white;
+}
+
+#tbl tr:hover {background-color: DarkGray  ;}
+
+#tbl th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: grey;
+  color: white;
+}
+
+
+
+
