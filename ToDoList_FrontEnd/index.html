@@ -1,0 +1,155 @@
+<html>
+	<head>
+		<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+		<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+		<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body>
+		<div id="root">
+		</div>
+	</body>
+	
+
+	<script>
+	document.onclick = function(e){
+		if (document.getElementById('addToDoModal').style.display == 'block' && e.target.id == 'addToDoModal')
+		{
+			document.getElementById('addToDoModal').style.display = 'none';		
+		}
+	};
+	</script>
+	
+	<script type="text/babel">
+
+	class NavigationBar extends React.Component{
+	
+		
+		onClickToDo() {
+			window.location = 'http://localhost/ToDoList_FrontEnd/todo.html';
+		}
+		onClickAddToDo() {
+		
+			document.getElementById('addToDoModal').style.display='block';
+		}
+			
+		render(){
+			let navBarClass = ["navbar"];
+			let dropdownClass = ["dropdown"];
+			let dropbtnClass = ["dropbtn"];
+			let dropdownContentClass = ["dropdown-content"];
+			let downClass = ["fa fa-caret-down"];
+			return (
+				<div className={navBarClass}>
+					<a href="http://localhost/ToDoList_FrontEnd/index.html">Home</a>
+					<div className={dropdownClass}>	
+						<button className={dropbtnClass} onClick={this.onClickToDo}>To Do
+							 <i className={downClass}></i>
+						</button>		
+						<div className={dropdownContentClass}>
+							<a onClick={this.onClickAddToDo} >Add</a>
+						</div>
+					</div>
+				</div>
+			);
+		}
+	}
+	
+	class Body extends React.Component{
+		render(){
+			let buttonClass = ["button"];
+			
+			return(
+					<div>
+						<center><h1>Powered By</h1></center>
+						<br></br>
+						<center><button className={buttonClass}>React</button></center>
+						<br></br>
+						<center><button className={buttonClass}>JAVA EE</button></center>
+						<br></br>
+						<center><button className={buttonClass}>SQL</button></center>
+					</div>
+			);
+		}
+	}
+	
+	class Modal extends React.Component{
+		onClickCloseModal() {
+			document.getElementById('addToDoModal').style.display='none';
+		}
+		
+		handleSubmit(event) {
+			
+			event.preventDefault();
+			const data = new FormData(event.target);
+			
+			
+			fetch("http://localhost:8080/ToDoList/rest/todo/createTD/", {
+			   method: "POST",
+			    headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+				 },
+			   body:  JSON.stringify({todo:data.get('createTodo')})
+			})
+			.then(function(response){ 
+			 return response.json();   
+			})
+			.then(function(data){ 
+			console.log(data)
+			});
+			document.getElementById('addToDoModal').style.display='none';
+			document.getElementById('createTodoTA').value="";
+		}
+		
+		render(){
+			let modalClass = ["modal"];
+			let modalContentClass = ["modal-content"];
+			let imgContainerClass = ["imgcontainer"];
+			let containerClass = ["container"];
+			let closeClass = ["close"];
+			
+			let buttonClass = ["button"];
+			
+			
+			return(
+				<div id="addToDoModal" className={modalClass} onSubmit={this.handleSubmit}>
+					<form className={modalContentClass}>
+						<div className={imgContainerClass}>	
+						<span className={closeClass} onClick={this.onClickCloseModal}>&times;</span>
+						</div>
+						<center>
+							<div className={containerClass}>
+								<label for="aToDo"><b>To Do</b></label>
+								<br></br>
+								<br></br>
+								<textarea id="createTodoTA" rows="4" cols="80" placeholder="Enter a to-do here..."name="createTodo" required></textarea>
+								<br></br>
+								<br></br>
+								<button className={buttonClass} type="submit">Create To Do</button>
+							</div>
+						</center>
+					</form>
+				</div>
+			);
+		}
+		
+	}
+	
+	
+	
+	 
+	ReactDOM.render(
+		<div>
+		<NavigationBar />
+		<Body />
+		<Modal />
+		</div>,
+		document.getElementById('root')
+	);
+	</script>
+
+
+<html>
